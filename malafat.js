@@ -152,7 +152,6 @@ Malafat = (function() {
                     })
                 } else {
                     let ul = document.createElement("ul")
-                    li.setAttribute("class", "file-tree-folder")
                     let iconClasses = this.folderIcon(data)
 
                     icon.setAttribute("class", iconClasses.open)
