@@ -246,7 +246,7 @@ Malafat = (function() {
             this.openfile = undefined
 
             //// prepare element
-            this.element.setAttribute('style', "display:flex;flex-wrap:nowrap; height:100%")
+            this.element.setAttribute('style', "display:flex;flex-wrap:nowrap;")
 
             let leftpane = document.createElement('div')
             this.element.appendChild(leftpane)
