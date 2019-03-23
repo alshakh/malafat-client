@@ -5,7 +5,9 @@
   "main": "malafat.js",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
-    "malafat": "^0.0.1",
+    "express": "^4.16.4",
+    "express-ws": "^4.0.0",
+    "malafat": "github:alshakh/malafat",
     "typeface-inconsolata": "0.0.72"
   },
   "devDependencies": {},
