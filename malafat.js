@@ -188,7 +188,6 @@ Malafat = (function() {
             let dirpath = element.dataset.dir
             let isWatch = ((typeof element.dataset['watch']) !== 'undefined' ? true : false)
             let isCreate = ((typeof element.dataset['create']) !== 'undefined' ? true : false)
-            let fontsize = ((typeof element.dataset['fontsize']) !== 'undefined' ? element.dataset['fontsize'] : "1em")
             //
             const socket = new WebSocket(socketUrl);
             //
@@ -206,7 +205,6 @@ Malafat = (function() {
                         "type": "get-file-tree"
                     }))
                 },
-                fontsize: fontsize
             })
             //
             socket.onmessage = function(ev) {
@@ -257,7 +255,7 @@ Malafat = (function() {
             let filetextEl = document.createElement("TEXTAREA")
             this.contentTextAreaElement = filetextEl
             filetextEl.setAttribute("readonly", "true")
-            filetextEl.setAttribute("style", "width:100%; height:100%; font-size : " + options.fontsize + ";")
+            filetextEl.setAttribute("style", "width:100%; height:100%;")
             rightpane.appendChild(filetextEl)
             this.element.appendChild(rightpane)
 
