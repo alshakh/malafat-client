@@ -1,0 +1,25 @@
+{
+  "name": "malafat-client",
+  "version": "0.0.1",
+  "description": "client side of malafat, a file explorer on the web",
+  "main": "malafat.js",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.1",
+    "malafat": "^0.0.1",
+    "typeface-inconsolata": "0.0.72"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alshakh/malafat-client.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alshakh/malafat-client/issues"
+  },
+  "homepage": "https://github.com/alshakh/malafat-client#readme"
+}

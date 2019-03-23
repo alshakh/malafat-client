@@ -1,0 +1,52 @@
+.file-tree {
+    font-size: 20px;
+    font-family: Inconsolata;
+}
+
+.file-tree li {
+    list-style-type: none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+    supported by Chrome and Opera */
+}
+
+.file-tree ul {
+    padding-left: 20px;
+}
+
+.file-tree li span {
+    display: inline;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.file-tree li i {
+    cursor: pointer;
+}
+
+.file-tree li span:hover {
+    background-color: #ADD8E6;
+    color: white;
+}
+.file-tree li span.selected {
+    background-color: #001F3F;
+    color: white;
+}
+
+.file-tree li > .hidden-file {
+    opacity : 0.7 ;
+}
+
+.file-tree li i.green { color: #51cf66 ;}
+.file-tree li i.blue { color: #339af0;}
+.file-tree li i.red { color:  #ff6b6b;}
+.file-tree li i.orange { color: #ff922b;}
+.file-tree li i.darkgreen { color : #20c997;}
+.file-tree li i.purple { color: #845ef7;}
+.file-tree li i.pink { color: #f06595;}
+
+
