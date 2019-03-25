@@ -2,9 +2,10 @@
     width:100%;
     height:100%;
     font-size: inherit;
+    font-family: Inconsolata, monospace !important;
 }
 .malafat-file-tree {
-    font-family: Inconsolata, monospace;
+    font-family: Inconsolata, monospace !important;
     max-width: 30%;
 }
 
