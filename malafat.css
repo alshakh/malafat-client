@@ -1,5 +1,6 @@
 .file-tree {
     font-family: Inconsolata, monospace;
+    max-width: 30%;
 }
 
 .file-tree li {
@@ -16,10 +17,7 @@
 }
 
 .file-tree > ul {
-    padding-left: 0px;
-}
-.file-tree ul {
-    padding-left: 20px;
+    margin-left:0px;
 }
 
 .file-tree li span {
