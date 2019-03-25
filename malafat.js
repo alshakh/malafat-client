@@ -6,6 +6,8 @@ Malafat = (function() {
             this.element.className += " malafat-file-tree"
 
             this.onSelectFn = onSelectFn
+            //
+            this._dirCollapsedState = {}
         }
 
         render(data) {
@@ -121,6 +123,7 @@ Malafat = (function() {
             return ""
         }
 
+
         createTree(data) {
             let _prevSelectedSpan = undefined
             let _toggleSelectedItem = (span,data) => {
@@ -135,14 +138,29 @@ Malafat = (function() {
                 console.log(data)
             }
             //
-            let _toggleCollapse = (ul,icon,iconClasses) => {
+            // -----------------
+            let _toggleCollapse = (data,ul,icon,iconClasses) => {
                 if (ul.style.display === "none") {
                     icon.setAttribute("class", iconClasses.open)
                     ul.style.display = "block";
+                    this._dirCollapsedState[data.path] = false
+
                 } else {
                     icon.setAttribute("class", iconClasses.closed)
                     ul.style.display = "none";
+                    this._dirCollapsedState[data.path] = true
                 }
+            }
+            let _isCollapsed = (data) => {
+                // check if state is determined
+                if ( this._dirCollapsedState[data.path] ) {
+                    return this._dirCollapsedState[data.path]
+                }
+                // default state of objects
+                if ( data.name === '.git' ) { 
+                    return true
+                }
+                return false
             }
             //
             let createTreeHelper = (data) => {
@@ -155,30 +173,34 @@ Malafat = (function() {
                 span.appendChild(document.createTextNode(data['name']))
                 li.appendChild(span)
 
-                if (!data.children) {
+                if (!data.children) { // files
                     icon.setAttribute("class", this.fileIcon(data))
 
                     span.addEventListener("click", () => {
                         _toggleSelectedItem(span,data)
                     })
-                } else {
+                } else { // folders
                     let ul = document.createElement("ul")
                     let iconClasses = this.folderIcon(data)
 
                     icon.setAttribute("class", iconClasses.open)
                     icon.addEventListener("click", () => {
-                        _toggleCollapse(ul,icon,iconClasses)
+                        _toggleCollapse(data,ul,icon,iconClasses)
                     })
                     for (let i = 0; i < data.children.length; i++) {
                         ul.appendChild(createTreeHelper(data.children[i]))
                     }
                     li.appendChild(ul)
+
+                    // auto collapse Elements
+                    if ( _isCollapsed(data) ) {
+                        _toggleCollapse(data,ul,icon,iconClasses)
+                    }
                 }
 
                 // deal with hidden files
                 span.className += " "+this.hiddenFile(data)
                 icon.className += " "+this.hiddenFile(data)
-                //
                 return li
             }
 
