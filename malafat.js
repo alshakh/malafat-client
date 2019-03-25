@@ -21,8 +21,8 @@ Malafat = (function() {
         folderIcon(data) {
             if ( data.name === ".git" ) {
                 return {
-                    open: "fab fa-git green",
-                    closed: "fab fa-git-square green"
+                    open: "fas fa-folder-open green",
+                    closed: "fas fa-folder green"
                 }
             }
             return {
@@ -126,11 +126,11 @@ Malafat = (function() {
 
         createTree(data) {
             let _prevSelectedSpan = undefined
-            let _toggleSelectedItem = (span,data) => {
+            let _toggleSelectedItem = (data,span) => {
                 if (_prevSelectedSpan) {
-                    _prevSelectedSpan.setAttribute("class", "")
+                    _prevSelectedSpan.className = _prevSelectedSpan.className.replace("selected","")
                 }
-                span.setAttribute("class", "selected")
+                span.className = "selected"
                 _prevSelectedSpan = span
                 //
                 this.onSelectFn(data)
@@ -157,10 +157,13 @@ Malafat = (function() {
                     return this._dirCollapsedState[data.path]
                 }
                 // default state of objects
-                if ( data.name === '.git' ) { 
-                    return true
+                switch ( data.name ) {
+                    case ".git":
+                    case "node_modules":
+                        return true
+                    default:
+                        return false
                 }
-                return false
             }
             //
             let createTreeHelper = (data) => {
@@ -177,7 +180,7 @@ Malafat = (function() {
                     icon.setAttribute("class", this.fileIcon(data))
 
                     span.addEventListener("click", () => {
-                        _toggleSelectedItem(span,data)
+                        _toggleSelectedItem(data,span)
                     })
                 } else { // folders
                     let ul = document.createElement("ul")
@@ -277,7 +280,7 @@ Malafat = (function() {
             this.element.appendChild(leftpane)
 
             let rightpane = document.createElement('div')
-            rightpane.setAttribute('style', "width:100%; margin-left:20px")
+            rightpane.setAttribute("class","malafat-file-content")
             let filetextEl = document.createElement("TEXTAREA")
             this.contentTextAreaElement = filetextEl
             filetextEl.setAttribute("readonly", "true")
