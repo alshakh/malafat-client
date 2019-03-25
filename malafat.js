@@ -122,10 +122,29 @@ Malafat = (function() {
         }
 
         createTree(data) {
-            let prevSelected = undefined
+            let _prevSelectedSpan = undefined
+            let _toggleSelectedItem = (span,data) => {
+                if (_prevSelectedSpan) {
+                    _prevSelectedSpan.setAttribute("class", "")
+                }
+                span.setAttribute("class", "selected")
+                _prevSelectedSpan = span
+                //
+                this.onSelectFn(data)
 
-                    var spanStyle = ''
-
+                console.log(data)
+            }
+            //
+            let _toggleCollapse = (ul,icon,iconClasses) => {
+                if (ul.style.display === "none") {
+                    icon.setAttribute("class", iconClasses.open)
+                    ul.style.display = "block";
+                } else {
+                    icon.setAttribute("class", iconClasses.closed)
+                    ul.style.display = "none";
+                }
+            }
+            //
             let createTreeHelper = (data) => {
                 let li = document.createElement("li")
 
@@ -140,15 +159,7 @@ Malafat = (function() {
                     icon.setAttribute("class", this.fileIcon(data))
 
                     span.addEventListener("click", () => {
-                        if (prevSelected) {
-                            prevSelected.setAttribute("class", "")
-                        }
-                        span.setAttribute("class", "selected")
-                        prevSelected = span
-                        //
-                        this.onSelectFn(data)
-
-                        console.log(data)
+                        _toggleSelectedItem(span,data)
                     })
                 } else {
                     let ul = document.createElement("ul")
@@ -156,13 +167,7 @@ Malafat = (function() {
 
                     icon.setAttribute("class", iconClasses.open)
                     icon.addEventListener("click", () => {
-                        if (ul.style.display === "none") {
-                            icon.setAttribute("class", iconClasses.open)
-                            ul.style.display = "block";
-                        } else {
-                            icon.setAttribute("class", iconClasses.closed)
-                            ul.style.display = "none";
-                        }
+                        _toggleCollapse(ul,icon,iconClasses)
                     })
                     for (let i = 0; i < data.children.length; i++) {
                         ul.appendChild(createTreeHelper(data.children[i]))
@@ -173,7 +178,7 @@ Malafat = (function() {
                 // deal with hidden files
                 span.className += " "+this.hiddenFile(data)
                 icon.className += " "+this.hiddenFile(data)
-
+                //
                 return li
             }
 
