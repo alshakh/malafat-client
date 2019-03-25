@@ -3,7 +3,7 @@ Malafat = (function() {
     class TreeUI {
         constructor(element, onSelectFn) {
             this.element = element
-            this.element.className += " file-tree"
+            this.element.className += " malafat-file-tree"
 
             this.onSelectFn = onSelectFn
         }
@@ -254,7 +254,7 @@ Malafat = (function() {
             let filetextEl = document.createElement("TEXTAREA")
             this.contentTextAreaElement = filetextEl
             filetextEl.setAttribute("readonly", "true")
-            filetextEl.setAttribute("style", "width:100%; height:100%;")
+            filetextEl.setAttribute("class", "malafat-file-content-textarea")
             rightpane.appendChild(filetextEl)
             this.element.appendChild(rightpane)
 
