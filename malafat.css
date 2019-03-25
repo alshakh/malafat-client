@@ -1,9 +1,10 @@
+
 .malafat-file-content {
-    border-style:solid;
-    border-width:1px;
-    border-color:lightgrey;
+    border-style:solid !important;
+    border-width:1px !important;
+    border-color:lightgrey !important;
     width:100%;
-    margin-left:20px
+    margin-left:20px !important;
 }
 
 .malafat-file-content-textarea {
@@ -17,9 +18,9 @@
 .malafat-file-tree {
     font-family: Inconsolata, monospace !important;
     max-width: 30%;
-    border-style:solid;
-    border-width:1px;
-    border-color:lightgrey;
+    border-style:solid !important;
+    border-width:1px !important;
+    border-color:lightgrey !important;
 }
 
 .malafat-file-tree li {
