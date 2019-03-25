@@ -246,10 +246,10 @@ Malafat = (function() {
             this.element.setAttribute('style', "display:flex;flex-wrap:nowrap;")
 
             let leftpane = document.createElement('div')
+            leftpane.setAttribute('style', "overflow-y:scroll")
             this.element.appendChild(leftpane)
 
             let rightpane = document.createElement('div')
-            leftpane.setAttribute('style', "overflow-y:scroll")
             rightpane.setAttribute('style', "width:100%; margin-left:20px")
             let filetextEl = document.createElement("TEXTAREA")
             this.contentTextAreaElement = filetextEl
