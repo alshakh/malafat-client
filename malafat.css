@@ -18,6 +18,7 @@
 .malafat-file-tree {
     font-family: Inconsolata, monospace !important;
     max-width: 30%;
+    min-width: 20%;
     border-style:solid !important;
     border-width:1px !important;
     border-color:lightgrey !important;
